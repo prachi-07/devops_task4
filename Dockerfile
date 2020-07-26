@@ -1,5 +1,8 @@
-FROM centos
-RUN yum install httpd -y
-COPY index.html /var/www/html
-EXPOSE 80
-CMD /usr/sbin/httpd -DFOREGROUND
+FROM centos:latest
+
+RUN yum install httpd -y 
+RUN yum install php -y
+COPY *.html /var/www/html
+CMD /usr/sbin/httpd -DFOREGROUND && /bin/bash
+COPY web_1.html /var/www/html/
+EXPOSE 80 
